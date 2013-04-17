@@ -1,7 +1,7 @@
 
 <div id="controls">
     <form id="view" action=<?php echo OCP\Util::linkTo( 'search_public' , 'search.php' );?> method="post">
-        <label for="search_pattern"><?php echo $l->t('Search Pattern').":";?></label><input type="text" id="search_pattern" name="pattern" value=<?php echo $_['pattern']; ?> >
+        <label for="search_pattern"><?php echo $l->t('Search Pattern').":";?></label><input type="text" id="search_pattern" name="pattern" value="<?php echo $_['pattern']; ?>" >
         <div class="separator"></div>
         <input type="submit" value="<?php echo " ".$l->t('Search')." ";?>" id="search_button"/>
     </form>

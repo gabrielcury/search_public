@@ -39,9 +39,9 @@ if ( isset($_POST['pattern']) and $_POST['pattern'] != '' ) {
     $search   = $result->fetchAll() ;
 
     if ( count($search) > 0 ){
-    	$caption = $l->t('Se ha(n) encontrado ') . count($search) .  $l->t(' coincidencia(s)');
+    	$caption = $l->t('Found ') . count($search) .  $l->t(' coincidence(s)');
     } else {
-    	$caption = $l->t('No se han encontrado coincidencias para ') . '<em>' . $pattern . '</em>' ;
+    	$caption = $l->t('No matches found for ') . '<em>' . $pattern . '</em>' ;
     }
 
 	$tmpl = new OCP\Template('search_public', 'search' , 'user');
