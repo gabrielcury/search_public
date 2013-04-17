@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<info>
+	<id>search_public</id>
+	<name>Search Public</name>
+	<description>Interface to Search Public Files</description>
+	<version>0.1</version>
+	<licence>AGPL</licence>
+	<author>Jorge Rafael Garcia Ramos</author>
+	<require>4.93</require>
+</info>
