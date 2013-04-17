@@ -24,10 +24,14 @@
 OCP\User::checkLoggedIn();
 OCP\App::checkAppEnabled('search_public');
 
+$l = OC_L10N::get('search_public');
+
 OCP\App::setActiveNavigationEntry( 'search_public_index' );
 
 $tmpl = new OCP\Template('search_public', 'search', 'user');
-$tmpl->assign( 'caption' , 'Search public Files & Folder in ownCloud :-)' );
+$tmpl->assign( 'caption' , $l->t('Search public Files & Folder in ownCloud :-)') );
+$tmpl->assign( 'pattern' , '' );
+$tmpl->assign( 'search' , array() );
 $tmpl->printPage();
 
 

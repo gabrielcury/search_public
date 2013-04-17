@@ -21,9 +21,8 @@
  *
  */
 
-OCP\JSON::checkAppEnabled('search_public');
-OCP\JSON::checkLoggedIn();
-OCP\JSON::callCheck();
+OCP\User::checkLoggedIn();
+OCP\App::checkAppEnabled('search_public');
 
 $l = OC_L10N::get('search_public');
 
@@ -40,19 +39,17 @@ if ( isset($_POST['pattern']) and $_POST['pattern'] != '' ) {
     $search   = $result->fetchAll() ;
 
     if ( count($search) > 0 ){
-    	$caption = 'Se ha(n) encontrado ' . count($search) . ' coincidencia(s).';
+    	$caption = $l->t('Se ha(n) encontrado ') . count($search) .  $l->t(' coincidencia(s)');
     } else {
-    	$caption = 'No se han encontrado coincidencias' ;
+    	$caption = $l->t('No se han encontrado coincidencias para ') . '<em>' . $pattern . '</em>' ;
     }
 
-	$tmpl = new OCP\Template('search_public', 'search_result');
+	$tmpl = new OCP\Template('search_public', 'search' , 'user');
 	$tmpl->assign( 'caption' , $caption );
 	$tmpl->assign( 'pattern' , $pattern );
 	$tmpl->assign( 'search' , $search  );
-	$page = $tmpl->fetchPage();
-
-    OCP\JSON::success( array('data' => array( 'page' => $page ) ));
+    $tmpl->printPage();
 
 } else {
-    OCP\JSON::error(array('data' => array( 'title' => $l->t('Error - Search Public') , 'message' => $l->t('error when trying search.') )));
+    header( 'Location: ' . OCP\Util::linkTo( 'search_public' , 'index.php' ) ) ;
 }
